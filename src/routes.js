@@ -7,8 +7,8 @@ import { Switch, Route } from "react-router-dom";
 export default function Routes() {
     return (
         <Switch>
-            <Route exact={true} path="/" component={Login} />
-            <Route path="/tasks" component={Tasks} />
+            <Route exact={true} path="/" component={Tasks} />
+            <Route path="/login" component={Login} />
             <Route path="/signup" component={SignUp} />
         </Switch>
     );

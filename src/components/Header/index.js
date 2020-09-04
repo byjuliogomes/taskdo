@@ -1,25 +1,37 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
+import BtnHeader from '../BtnHeader';
 
 const ContainerHeader = styled.div`
-    margin-top: 62px;
+    padding-top: ${(props) => (props.on ? "20px" : "62px")};
     margin-left: 29px;
+    margin-right: 29px;
     margin-bottom: 12%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media (min-width: 600px) {
+    margin-bottom: 0;
+    padding-top: ${(props) => (props.on ? "10px" : "32px")}
+  }
 `;
 
 const Logo = styled.img`
-    width: 200px;
-    height: auto
+    width: ${(props) => (props.on ? "100px" : "200px")};
+    height: auto;
+    
 `;
 
-export default class Header extends Component {
-    render() {
+const Header = ({logo, on, history}) => {
         return (
             <>
-                <ContainerHeader className="header">
-                    <Logo src="https://svgshare.com/i/P74.svg"></Logo>
+                <ContainerHeader on={on}>
+                    <Logo on={on} src={logo}></Logo>
+                    <BtnHeader on={on} onPress={() => history.push("/login")}></BtnHeader>
                 </ContainerHeader>
             </>
         )
     }
-}
+
+export default Header;

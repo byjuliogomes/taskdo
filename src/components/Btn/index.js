@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 const ContainerBtn = styled.button`
     width: 120px;
     height: 66px;
-    background-color: var(--green);
+    background-color: ${(props) => (props.color)};
     color: var(--grey);
     font-size: 16pt;
     display: flex;
@@ -12,14 +12,19 @@ const ContainerBtn = styled.button`
     justify-content: center;
     border: none;
 
+    @media (min-width: 400px) {
+    width: 260px;
+    margin: 30px 0 30px 0;
+  }
+
 `;
 
-export default class Btn extends Component {
-    render() {
+const Btn = ({ onPress, children, color}) => {
         return (
             <>
-                <ContainerBtn>{this.props.children}</ContainerBtn>
+                <ContainerBtn color={color} onClick={onPress}>{children}</ContainerBtn>
             </>
         )
     }
-}
+
+export default Btn
